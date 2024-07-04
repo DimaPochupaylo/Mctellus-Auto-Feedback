@@ -1,10 +1,9 @@
+require('dotenv').config()
 const puppeteer = require("puppeteer");
 const Bot = require("node-telegram-bot-api");
 const Tesseract = require("tesseract.js");
 
-//1020109969:AAEOl01CO031hjU1T7jOU5TYSJj7gKlzV9w
-
-const bot = new Bot("1020109969:AAEOl01CO031hjU1T7jOU5TYSJj7gKlzV9w", {
+const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN, {
   polling: true,
 });
 
@@ -37,7 +36,7 @@ async function vidguc(str, id) {
       console.log("Продовжити не було");
     }
 
-    await delay(20000)
+    
 
     // Натискання на div з вибором мови
     await page.waitForSelector('div[ng-repeat="choice in dd.prompt.choices"]');
@@ -191,6 +190,8 @@ async function vidguc(str, id) {
     //   const div = document.querySelector("div.menuItem.checked");
     //   div.click();
     // });
+
+    await delay(3000)
 
     console.log(`Відгук ${str} залишено`);
     await bot.sendMessage(id, `Відгук ${str} залишено`);
