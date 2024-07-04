@@ -1,0 +1,15 @@
+runtime: nodejs14
+
+instance_class: F2
+
+env_variables:
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+  PUPPETEER_EXECUTABLE_PATH: '/usr/bin/google-chrome-stable'
+
+manual_scaling:
+  instances: 1
+
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
